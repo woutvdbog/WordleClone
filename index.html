@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Woordje</title>
+</head>
+<body>
+    <script src="data/words.js"></script>
+    <script src="js/woordje.js"></script>
+    <div class="container">
+        <div class="board">
+            <!-- row 1 -->
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            <!-- row 2 -->
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            <!-- row 3 -->
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            <!-- row 4 -->
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            <!-- row 5 -->
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            <!-- row 6 -->
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+        </div>
+        <div class="keyboard">
+            <div class="key-row">
+                <button class="key" id="q" onClick="guessLetter(this.id)">q</button>
+                <button class="key" id="w" onClick="guessLetter(this.id)">w</button>
+                <button class="key" id="e" onClick="guessLetter(this.id)">e</button>
+                <button class="key" id="r" onClick="guessLetter(this.id)">r</button>
+                <button class="key" id="t" onClick="guessLetter(this.id)">t</button>
+                <button class="key" id="y" onClick="guessLetter(this.id)">y</button>
+                <button class="key" id="u" onClick="guessLetter(this.id)">u</button>
+                <button class="key" id="i" onClick="guessLetter(this.id)">i</button>
+                <button class="key" id="o" onClick="guessLetter(this.id)">o</button>
+                <button class="key" id="p" onClick="guessLetter(this.id)">p</button>
+            </div>
+            <div class="key-row">
+                <span class="spacer"></span>
+                <button class="key" id="a" onClick="guessLetter(this.id)">a</button>
+                <button class="key" id="s" onClick="guessLetter(this.id)">s</button>
+                <button class="key" id="d" onClick="guessLetter(this.id)">d</button>
+                <button class="key" id="f" onClick="guessLetter(this.id)">f</button>
+                <button class="key" id="g" onClick="guessLetter(this.id)">g</button>
+                <button class="key" id="h" onClick="guessLetter(this.id)">h</button>
+                <button class="key" id="j" onClick="guessLetter(this.id)">j</button>
+                <button class="key" id="k" onClick="guessLetter(this.id)">k</button>
+                <button class="key" id="l" onClick="guessLetter(this.id)">l</button>
+                <span class="spacer"></span>
+            </div>
+            <div class="key-row">
+                <span class="spacer-2"></span>
+                <button class="key-s" onClick="checkWord(letterStatus, guessedWord)">enter</button>
+                <button class="key" id="z" onClick="guessLetter(this.id)">z</button>
+                <button class="key" id="x" onClick="guessLetter(this.id)">x</button>
+                <button class="key" id="c" onClick="guessLetter(this.id)">c</button>
+                <button class="key" id="v" onClick="guessLetter(this.id)">v</button>
+                <button class="key" id="b" onClick="guessLetter(this.id)">b</button>
+                <button class="key" id="n" onClick="guessLetter(this.id)">n</button>
+                <button class="key" id="m" onClick="guessLetter(this.id)">m</button>
+                <button class="key-s" onClick="backSpace(index)">&#60;</button>
+                <span class="spacer-2"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+ 
+
+* {
+    margin: 0;
+    padding: 0;    
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #292929;
+    box-sizing: border-box;
+}
+
+.board {
+    width: 244px;
+    height: 302px;
+    padding: 10px;
+    margin: 0 auto;
+    grid-template-columns: repeat(5, 44.4px);
+    grid-template-rows: repeat(6, 44.4px);
+    display: grid;
+    grid-gap: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile {
+    border: 2px solid #4f4f4f;
+    height: 44.4px;
+    width: 44.4px;
+    display: flex;
+    font-size: 27px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.row {
+    width: 100%;
+    
+    column-gap: 5px;
+    display: flex;
+}
+
+.keyboard {
+    height: 200px;
+}
+
+.key-row {
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.key, .key-s { 
+    height: 50px;
+    margin: 3px;
+    background-color: #808080;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+}
+
+.key {
+    width: 43px;
+}
+.key-s {
+    width: 64.4px;
+}
+
+.spacer {
+    width: 21.8px;
+    height: 50px;
+}
+
+.spacer-2 {
+    height: 58px;
+}
