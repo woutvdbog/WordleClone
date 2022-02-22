@@ -58,7 +58,6 @@
                 for(var i = 0; i < guessedWord.length; i++) {
                     document.getElementById(guessedWord[i].toString()).style.backgroundColor = "#404040";
                 }
-                   
                 for(var i = 0; i < 5; i++) {
                     if(wordLetters[i] === guessedWord[i] && contains.includes(guessedWord[i])) {
                         contains = removeItem(contains, guessedWord[i])
@@ -69,14 +68,13 @@
                     } 
                 }
                 for(var i = 0; i < 5; i++) {
-                    if(contains.includes(guessedWord[i])) {
-                        
+                    if(contains.includes(guessedWord[i]) && document.querySelector(`.tile:nth-of-type(${index + i - 4})`).style.backgroundColor == "") {
                         contains = removeItem(contains, guessedWord[i])
-                        document.querySelector(`.tile:nth-of-type(${index + i - 4})`).style.backgroundColor = "#d4c65f";
-                        document.querySelector(`.tile:nth-of-type(${index + i - 4})`).style.border = "none";
-                        document.getElementById(guessedWord[i]).style.backgroundColor = "#d4c65f";
+                            document.querySelector(`.tile:nth-of-type(${index + i - 4})`).style.backgroundColor = "#d4c65f";
+                            document.querySelector(`.tile:nth-of-type(${index + i - 4})`).style.border = "none";
+                            document.getElementById(guessedWord[i]).style.backgroundColor = "#d4c65f";
                     }
-                } 
+                }
                     /*else {
                         document.getElementById(guessedWord[i]).style.backgroundColor = "#404040";
                     }*/
