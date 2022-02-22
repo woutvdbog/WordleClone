@@ -29,7 +29,7 @@
             letterIndex++;
         }
     }
-    
+
     function nextChance() {
         letterIndex = 0
         guessedWord = [];
@@ -47,9 +47,9 @@
                     document.getElementById(guessedWord[i]).style.backgroundColor = "#45995b";
                 } 
                 else if(letterStatus[i] == "contains") {
-                    document.querySelector(`.tile:nth-of-type(${index + i - 4})`).style.backgroundColor = "#d6923a";
+                    document.querySelector(`.tile:nth-of-type(${index + i - 4})`).style.backgroundColor = "#d4c65f";
                     document.querySelector(`.tile:nth-of-type(${index + i - 4})`).style.border = "none";
-                    document.getElementById(guessedWord[i]).style.backgroundColor = "#d6923a";
+                    document.getElementById(guessedWord[i]).style.backgroundColor = "#d4c65f";
                 }
                 else {
                     document.getElementById(guessedWord[i]).style.backgroundColor = "#404040";
@@ -61,10 +61,12 @@
         }
     }
 
-    function backSpace(i) {
-        document.querySelector(`.tile:nth-of-type(${index})`).textContent = "";
-        guessedWord.pop();
-        letterStatus.pop();
-        letterIndex--;
-        index--;
+    function backSpace(i, guessedWord) {
+        if(guessedWord.length > 0) {
+            document.querySelector(`.tile:nth-of-type(${index})`).textContent = "";
+            guessedWord.pop();
+            letterStatus.pop();
+            letterIndex--;
+            index--;
+        }
     }
