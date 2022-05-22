@@ -63,7 +63,7 @@ function startWordle() {
     gameRunning = false;
     document.getElementById(
       "popupcontent"
-    ).innerHTML = `Helaas, je vandaag al gespeeld, keer morgen terug!<br><br><span>Winstpercentage: ${Math.round(
+    ).innerHTML = `Helaas, je hebt vandaag al gespeeld, keer morgen terug!<br><br><span>Winstpercentage: ${Math.round(
       (stats.getWon() / stats.getPlayed()) * 100
     )}%<br>Gewonnen: ${stats.getWon()}<br>Verloren: ${stats.getLost()}</span>`;
     document.getElementById("popup").classList.add("win-animation");
