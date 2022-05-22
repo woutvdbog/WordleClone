@@ -92,6 +92,10 @@ body {
     border-radius: 5px;
 }
 
+.popup .content span {
+    font-size: 14px;
+}
+
 .container {
     height: 100%;
     box-sizing: border-box;
