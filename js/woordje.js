@@ -1,7 +1,7 @@
-var word, wordLetters, letterIndex, chance, index;
+var word, wordLetters, letterIndex, chance, index = 0;
 var letterStatus = [];
 var guessedWord = [];
-var grid = [];
+var grid = 0;
 var gameRunning;
 var baseDate = new Date("02/22/2022"),
   baseValue = 1;
@@ -14,7 +14,58 @@ var contains;
 var stats;
 
 function init() {
+  stats = new Statistics(localStorage);
+  if(localStorage['state']) {
+    var curState = JSON.parse(localStorage['state']);
+    if(curState.date !== baseValue) {
+      localStorage['state'] = [];
+      } else {
+      const savedstate = JSON.parse(localStorage['state']);
+      [state.boardstate, state.evaluations] = [savedstate.boardstate, savedstate.evaluations]
+    }
+
+    loadSavedBoardstate();
+  }
   startWordle();
+}
+
+const state = {
+  date: baseValue,
+  boardstate: [],
+  evaluations: []
+}
+
+function loadSavedBoardstate() {
+  const savedBoardstate = state;
+  for(let i = 0; i < savedBoardstate.boardstate.length; i++) {
+    for(let j = 0; j < 5; j++) {
+      document.querySelector(`.tile:nth-of-type(${index + 1})`).textContent = savedBoardstate.boardstate[i][j].toUpperCase();
+      document.getElementById(
+        savedBoardstate.boardstate[i][j]
+      ).style.backgroundColor = "#404040";
+      if(savedBoardstate.evaluations[i][j] === 'correct') {
+        document.querySelector(
+          `.tile:nth-of-type(${index+1})`
+        ).style.backgroundColor = "#45995b";
+        document.querySelector(
+          `.tile:nth-of-type(${index +1})`
+        ).style.border = "none";
+        document.getElementById(savedBoardstate.boardstate[i][j]).style.backgroundColor =
+          "#45995b";
+      }
+      if(savedBoardstate.evaluations[i][j] === "present") {
+        document.querySelector(
+          `.tile:nth-of-type(${index + 1})`
+        ).style.backgroundColor = "#d4c65f";
+        document.querySelector(
+          `.tile:nth-of-type(${index + 1})`
+        ).style.border = "none";
+        document.getElementById(savedBoardstate.boardstate[i][j]).style.backgroundColor =
+          "#d4c65f";
+      }
+      index++;
+    }
+  }
 }
 
 class Statistics {
@@ -58,8 +109,7 @@ class Statistics {
 }
 
 function startWordle() {
-  stats = new Statistics(localStorage);
-  if (parseInt(stats.getDay()) === baseValue) {
+  if (parseInt(stats.getDay()) === baseValue || index >= 30) {
     gameRunning = false;
     document.getElementById(
       "popupcontent"
@@ -69,7 +119,6 @@ function startWordle() {
     document.getElementById("popup").classList.add("win-animation");
   } else {
     chance = 0;
-    index = 0;
     letterIndex = 0;
     word = words[baseValue];
     wordLetters = word.split("");
@@ -79,7 +128,7 @@ function startWordle() {
 }
 
 function guessLetter(guessedLetter) {
-  if (letterIndex < 5 && gameRunning === true && grid.length != 6) {
+  if (letterIndex < 5 && gameRunning === true && grid != 6) {
     document.querySelector(`.tile:nth-of-type(${index + 1})`).textContent =
       guessedLetter.toUpperCase();
     guessedWord.push(guessedLetter);
@@ -103,8 +152,7 @@ function nextChance() {
 }
 
 function checkWord(guessedWord) {
-  var colored = [...guessedWord];
-  console.log(wordLetters);
+  var evaluation = ['absent', 'absent', 'absent', 'absent', 'absent'];
   if (guessedWord.length === 5) {
     if (
       words.includes(guessedWord.join("")) ||
@@ -131,6 +179,7 @@ function checkWord(guessedWord) {
           ).style.border = "none";
           document.getElementById(guessedWord[i]).style.backgroundColor =
             "#45995b";
+          evaluation[i] = 'correct';
         }
       }
       for (var i = 0; i < 5; i++) {
@@ -148,10 +197,15 @@ function checkWord(guessedWord) {
           ).style.border = "none";
           document.getElementById(guessedWord[i]).style.backgroundColor =
             "#d4c65f";
+          evaluation[i] = 'present';
         }
       }
 
-      grid.push(letterStatus);
+      state.boardstate.push(guessedWord);
+      state.evaluations.push(evaluation);
+      localStorage['state'] = JSON.stringify(state);
+
+      grid++;
       if (c === 5) {
         gameRunning = false;
         stats.addWin();
@@ -162,7 +216,7 @@ function checkWord(guessedWord) {
         )}%<br>Gewonnen: ${stats.getWon()}<br>Verloren: ${stats.getLost()}</span>`;
         document.getElementById("popup").classList.add("win-animation");
         stats.setDay();
-      } else if (grid.length === 6) {
+      } else if (index === 30) {
         gameRunning = false;
         stats.addLose();
         document.getElementById(
