@@ -128,8 +128,6 @@ body {
 .tile {
     transition-duration: 0.3s;
     border: 2px solid #4f4f4f;
-    /*height: 44.4px;
-    width: 44.4px;*/
     display: inline-flex;
     min-width: 100%;
     min-height: 100%;
@@ -161,6 +159,7 @@ body {
 }
 
 .key, .key-s { 
+    touch-action: manipulation;
     transition-duration: 0.3s;
     height: 50px;
     margin: 3px;
